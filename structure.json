@@ -1,0 +1,188 @@
+[
+	{
+		"branch": "x",
+		"structure": [
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 64,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 128,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 256,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 256,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 512,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 512,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 512,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 512,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "flatten"
+			}
+		]
+	},
+	{
+		"branch": "p",
+		"input-size": 52,
+		"structure": [
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 64,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 128,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 128,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 512,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "conv",
+				"size": 3,
+				"channels": 512,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "pool",
+				"mode": "max",
+				"stride": 2
+			},
+			{
+				"type": "flatten"
+			}
+		]
+	},
+	{
+		"branch": "F",
+		"structure": [
+			{
+				"type": "dense",
+				"outputs": 4096,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "dense",
+				"outputs": 4096,
+				"bn": 1,
+				"actv": "relu"
+			},
+			{
+				"type": "dense",
+				"outputs": 1000,
+				"bn": 1,
+				"actv": "relu"
+			}
+		]
+	},
+	{
+		"branch": "",
+		"batch-size": 16,
+		"eps": 1e-8,
+		"loss-b": "gaussian",
+		"vid-dataset": "ILSVRC-VID.h5",
+		"det-dataset": "ILSVRC-DET.h5",
+		"augment-bbox-scale": 0.01,
+		"augment-image-bound": 5,
+		"model-output": "model-valid.h5",
+		"model-intermediate-outputs": "model-valid.h5",
+		"relu-bias-init": 0.1,
+		"debug": 0,
+		"cudnn": 1
+	}
+]
